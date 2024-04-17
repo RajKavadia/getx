@@ -1,6 +1,5 @@
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../get.dart';
@@ -532,7 +531,7 @@ extension GetNavigationExt on GetInterface {
       curve: curve,
       duration: duration,
       id: id,
-      routeName: routeName ?? "/",
+      routeName: routeName,
       fullscreenDialog: fullscreenDialog,
       arguments: arguments,
       bindings: bindings,
@@ -1054,13 +1053,8 @@ extension GetNavigationExt on GetInterface {
     Duration? duration,
     double Function(BuildContext context)? gestureWidth,
   }) {
-    if(!kIsWeb){
-      routeName ??= "/${page.runtimeType.toString()}";
-      routeName = _cleanRouteName(routeName);
-    }else{
-      routeName ??= "/${searchDelegate(id).pageSettings?.name.toString()??"/"}";
-    }
-
+    routeName ??= "/${page.runtimeType.toString()}";
+    routeName = _cleanRouteName(routeName);
     return searchDelegate(id).offAll<T>(
       page,
       predicate: predicate,
