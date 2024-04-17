@@ -1,5 +1,6 @@
 import 'dart:ui' as ui;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../get.dart';
@@ -524,6 +525,9 @@ extension GetNavigationExt on GetInterface {
       bool rebuildStack = true,
       PreventDuplicateHandlingMode preventDuplicateHandlingMode =
           PreventDuplicateHandlingMode.reorderRoutes}) {
+    if(kIsWeb){
+      routeName = searchDelegate(id).pageSettings?.name ?? "getpage";
+    }
     return searchDelegate(id).to(
       page,
       opaque: opaque,
