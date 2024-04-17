@@ -526,7 +526,7 @@ extension GetNavigationExt on GetInterface {
       PreventDuplicateHandlingMode preventDuplicateHandlingMode =
           PreventDuplicateHandlingMode.reorderRoutes}) {
     if(kIsWeb){
-      routeName = searchDelegate(id).pageSettings?.name ?? "getpage";
+      routeName = "/";
     }
     return searchDelegate(id).to(
       page,
